@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../models/News.php';
+
 
 class NewsController
 {
