@@ -9,7 +9,7 @@ class DB{
 
     }
 
-    public function query($sql, $class_name = "stdClass")
+    public function queryAll($sql, $class_name = "stdClass")
     {
     $res = $this->mysqli->query($sql);
     if(false === $res)
@@ -22,6 +22,11 @@ class DB{
         $ret[] = $row;
    }
     return $ret;
+    }
+
+    public function queryOne($sql, $class_name = "stdClass")
+    {
+        return $this->queryAll($sql, $class_name)[0];
     }
 
 }

@@ -1,12 +1,18 @@
 <?php
-require __DIR__ . '/models/News.php';
+//require __DIR__ . '/controllers/NewsController.php';
 
-//$db = new DB();
-//$items = $db->query('SELECT * FROM news');
-//var_dump($items);
+$ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
+$act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
-//$news = new News();
-$items = News::getAll();
-//var_dump($items);
+//$controller = new NewsController();
+//$controller->actionAll();
 
-require __DIR__ . '/views/main.php';
+$controllerClassName = $ctrl . 'Controller';
+require_once __DIR__ . '/controllers/' . $controllerClassName . '.php';
+
+$controller = new $controllerClassName;
+$method = 'action' . $act;
+$controller->$method();
+
+
+
